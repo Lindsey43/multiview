@@ -1,0 +1,20 @@
+    <ion-view view-title="ToDo List">
+  <ion-content>
+    <div class="row">
+      <div class="col col-75">
+        <input type="text" ng-model="NewTodo.task" placeholder="What needs to be done?"> 
+      </div>
+      <div class="col text-right">
+        <button class="button button-energized" ng-click="addTodo()">Add</button>
+            <button class="button button-assertive" ng-click="removeTodo($index)"><i class="icon ion-close-round"></i>
+        </button>
+      </div>
+    </div>
+    <div class="list">
+        <ion-checkbox class="item item-button-right" ng-repeat="todo in todos" ng-model="item.checked" ng-checked="item.checked"ng-change="checkedState($index)">
+         {{todo.task}}
+        </ion-checkbox>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
