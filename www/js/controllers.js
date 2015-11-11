@@ -130,15 +130,25 @@ angular.module('starter.controllers', [])
     };
     //end vibrations checked
     
-       
-        
-        //$cordovaLocalNotification.add({
-//        id: 1,
-//        title: "I am a notification"
-//        text: "All items completed"
-//    })
+    //Notification checked
+       var count = 0;
+        angular.forEach($scope.todos, function (todo) {
+            if (todo.checked) {
+                count++;
+            }
+        });
 
-//});
+        //If all items are checked, send off a notification
+        if (count == $scope.todos.length && $scope.notification.checked) {
+            //alert("Notification");
+            $cordovaLocalNotification.add({
+                id: '1',
+                title: "Todo List",
+                text: 'All todos are going to be seleted.'
+            }).then(function () {
+                console.log('notification Completed');
+            });
+        }
     $scope.removeFood = function () {
         
         for (var i =0; i<$scope.foods.length;i++) {
@@ -204,6 +214,27 @@ angular.module('starter.controllers', [])
         }
     };
     //end vibrations checked
+    
+    //Notification checked
+       var count = 0;
+        angular.forEach($scope.todos, function (todo) {
+            if (todo.checked) {
+                count++;
+            }
+        });
+
+        //If all items are checked, send off a notification
+        if (count == $scope.todos.length && $scope.notification.checked) {
+            //alert("Notification");
+            $cordovaLocalNotification.add({
+                id: '1',
+                title: "Todo List",
+                text: 'All todos are going to be seleted.'
+            }).then(function () {
+                console.log('notification Completed');
+            });
+        }
+
     $scope.removeJob = function () {
         
         for (var i =0; i<$scope.jobs.length;i++) {
@@ -211,14 +242,7 @@ angular.module('starter.controllers', [])
               delete $scope.jobs.splice(i -1,1);
             } 
         }
-        
-       //$cordovaLocalNotification.add({
-//        id: 1,
-//        title: "I am a notification"
-//        text: "All items completed"
-//    })
 
-//});
     };
     $scope.removeDefault = function (index) {
         $scope.defaults.splice(index, 1);
